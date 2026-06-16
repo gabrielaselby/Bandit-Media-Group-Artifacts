@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMG Skills Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&family=Archivo:wght@400;500;600;700;800&family=Vollkorn:ital@1&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#b73030;
+    --black:#252525;
+    --cream:#efedea;
+    --paper:#f6f4f1;
+    --line:#252525;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--black);
+    font-family:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    line-height:1.4;
+    padding:40px 24px 64px;
+  }
+  .wrap{max-width:1180px;margin:0 auto;}
+
+  /* HEADER */
+  .masthead{
+    border:2px solid var(--line);
+    border-radius:14px;
+    background:var(--paper);
+    box-shadow:8px 8px 0 var(--black);
+    padding:34px 36px;
+    margin-bottom:34px;
+    position:relative;
+    overflow:hidden;
+  }
+  .masthead .tag{
+    display:inline-block;
+    background:var(--red);
+    color:var(--cream);
+    font-family:'Archivo',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    padding:6px 12px;
+    border-radius:8px;
+    margin-bottom:16px;
+  }
+  h1{
+    font-family:'Special Gothic Expanded One','Archivo',sans-serif;
+    font-weight:400;
+    font-size:54px;
+    line-height:.98;
+    letter-spacing:.01em;
+    text-transform:uppercase;
+    color:var(--black);
+  }
+  h1 .accent{color:var(--red);}
+  .sub{
+    font-family:'Vollkorn',Georgia,serif;
+    font-style:italic;
+    font-size:18px;
+    margin-top:14px;
+    max-width:660px;
+    color:#3a3a3a;
+  }
+  .counts{
+    display:flex;
+    gap:14px;
+    margin-top:24px;
+    flex-wrap:wrap;
+  }
+  .kpi{
+    border:2px solid var(--line);
+    border-radius:12px;
+    background:var(--cream);
+    padding:12px 18px;
+    box-shadow:4px 4px 0 var(--black);
+    min-width:120px;
+  }
+  .kpi .num{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    font-size:30px;
+    color:var(--red);
+    line-height:1;
+  }
+  .kpi .lbl{
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-top:6px;
+    color:var(--black);
+  }
+  .howto{
+    margin-top:22px;
+    font-size:14px;
+    font-weight:500;
+  }
+  .howto code{
+    font-family:'JetBrains Mono',monospace;
+    background:var(--black);
+    color:var(--cream);
+    padding:2px 8px;
+    border-radius:6px;
+    font-size:13px;
+  }
+
+  /* SECTIONS */
+  .section{margin-bottom:38px;}
+  .section-head{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:18px;
+  }
+  .section-head .dot{
+    width:18px;height:18px;border-radius:50%;
+    border:2px solid var(--line);
+    flex:0 0 auto;
+  }
+  .section-head h2{
+    font-family:'Archivo',sans-serif;
+    font-weight:800;
+    font-size:26px;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+  }
+  .section-head .pill{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    font-size:12px;
+    border:2px solid var(--line);
+    border-radius:20px;
+    padding:3px 12px;
+    background:var(--paper);
+  }
+  .section-head .ns{
+    margin-left:auto;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:#6a6a6a;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
+    gap:18px;
+  }
+  .card{
+    border:2px solid var(--line);
+    border-radius:14px;
+    background:var(--paper);
+    box-shadow:6px 6px 0 var(--black);
+    padding:18px 18px 16px;
+    display:flex;
+    flex-direction:column;
+    transition:transform .08s ease;
+  }
+  .card:hover{transform:translate(-2px,-2px);}
+  .card .cmd{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    font-size:14px;
+    color:var(--cream);
+    background:var(--red);
+    border-radius:8px;
+    padding:6px 10px;
+    align-self:flex-start;
+    margin-bottom:12px;
+    word-break:break-all;
+  }
+  .card .name{
+    font-weight:800;
+    font-size:17px;
+    margin-bottom:7px;
+    letter-spacing:.01em;
+  }
+  .card .desc{
+    font-size:13.5px;
+    color:#3a3a3a;
+    line-height:1.45;
+  }
+
+  /* color coding per plugin */
+  .ops .dot{background:#ffb74d;}
+  .ops .cmd{background:var(--black);}
+  .prod .dot{background:#64b5f6;}
+  .prod .cmd{background:var(--red);}
+  .mkt .dot{background:#81c784;}
+  .mkt .cmd{background:#2f6b3a;}
+
+  footer{
+    margin-top:10px;
+    border-top:2px solid var(--line);
+    padding-top:16px;
+    font-size:12px;
+    color:#6a6a6a;
+    font-family:'JetBrains Mono',monospace;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  @media print{
+    body{background:#fff;padding:0;}
+    .card,.masthead,.kpi{box-shadow:none;}
+    .card:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="tag">Bandit Media Group</span>
+    <h1>Your Skills <span class="accent">Playbook</span></h1>
+    <p class="sub">Everything Operations, Productivity, and Marketing just dropped into your toolkit. Pick a skill, type its command, go.</p>
+    <div class="counts">
+      <div class="kpi"><div class="num">21</div><div class="lbl">Total Skills</div></div>
+      <div class="kpi"><div class="num">3</div><div class="lbl">Plugins</div></div>
+      <div class="kpi"><div class="num">09</div><div class="lbl">Operations</div></div>
+      <div class="kpi"><div class="num">04</div><div class="lbl">Productivity</div></div>
+      <div class="kpi"><div class="num">08</div><div class="lbl">Marketing</div></div>
+    </div>
+    <p class="howto">Run any of these by typing its command in chat, for example <code>/operations:status-report</code></p>
+  </header>
+
+  <!-- OPERATIONS -->
+  <section class="section ops">
+    <div class="section-head">
+      <span class="dot"></span>
+      <h2>Operations</h2>
+      <span class="pill">9 skills</span>
+      <span class="ns">/operations:</span>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="cmd">/operations:status-report</span><div class="name">Status Report</div><div class="desc">Weekly or monthly leadership update with KPIs, green/yellow/red health, risks, and action items. Turns a pile of tracker activity into a readable narrative.</div></div>
+      <div class="card"><span class="cmd">/operations:process-doc</span><div class="name">Process Doc</div><div class="desc">Formalize a process that lives in someone's head. Flowcharts, RACI, and SOPs for handoffs or audits, including the edge cases.</div></div>
+      <div class="card"><span class="cmd">/operations:runbook</span><div class="name">Runbook</div><div class="desc">Turn tribal knowledge into exact step-by-step instructions for a recurring task, with troubleshooting, rollback, and escalation paths.</div></div>
+      <div class="card"><span class="cmd">/operations:process-optimization</span><div class="name">Process Optimization</div><div class="desc">Analyze a slow or clunky workflow, find the bottleneck, and lay out a leaner version with fewer steps.</div></div>
+      <div class="card"><span class="cmd">/operations:capacity-plan</span><div class="name">Capacity Plan</div><div class="desc">Workload analysis and utilization forecasting. Stress-test whether upcoming projects fit the people you have, and whether to hire or deprioritize.</div></div>
+      <div class="card"><span class="cmd">/operations:risk-assessment</span><div class="name">Risk Assessment</div><div class="desc">Identify, score, and mitigate operational risks for a project, vendor, process, or decision. Builds a risk register.</div></div>
+      <div class="card"><span class="cmd">/operations:vendor-review</span><div class="name">Vendor Review</div><div class="desc">Evaluate a vendor with cost analysis, risk, and a recommendation. TCO breakdown and negotiation points before sign-off.</div></div>
+      <div class="card"><span class="cmd">/operations:change-request</span><div class="name">Change Request</div><div class="desc">Propose a system or process change with impact analysis, rollback plan, and stakeholder comms ready for review.</div></div>
+      <div class="card"><span class="cmd">/operations:compliance-tracking</span><div class="name">Compliance Tracking</div><div class="desc">Track requirements and audit readiness across SOC 2, ISO 27001, GDPR, and the like. Documents what's done and what's open.</div></div>
+    </div>
+  </section>
+
+  <!-- PRODUCTIVITY -->
+  <section class="section prod">
+    <div class="section-head">
+      <span class="dot"></span>
+      <h2>Productivity</h2>
+      <span class="pill">4 skills</span>
+      <span class="ns">/productivity:</span>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="cmd">/productivity:start</span><div class="name">Start</div><div class="desc">Initialize the system and open your dashboard. First-run setup, bootstraps working memory from your task list, and decodes your shorthand.</div></div>
+      <div class="card"><span class="cmd">/productivity:task-management</span><div class="name">Task Management</div><div class="desc">Add, complete, and track commitments in a shared TASKS.md file. Your running to-do list.</div></div>
+      <div class="card"><span class="cmd">/productivity:update</span><div class="name">Update</div><div class="desc">Sync new assignments from your tracker into TASKS.md, triage stale or overdue items, and catch todos buried in chat and email.</div></div>
+      <div class="card"><span class="cmd">/productivity:memory-management</span><div class="name">Memory Management</div><div class="desc">Two-tier memory that decodes nicknames, acronyms, and project codenames so requests are understood like a colleague would.</div></div>
+    </div>
+  </section>
+
+  <!-- MARKETING -->
+  <section class="section mkt">
+    <div class="section-head">
+      <span class="dot"></span>
+      <h2>Marketing</h2>
+      <span class="pill">8 skills</span>
+      <span class="ns">/marketing:</span>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="cmd">/marketing:seo-audit</span><div class="name">SEO Audit</div><div class="desc">Keyword research, on-page analysis, content gaps, technical checks, and competitor comparison. Returns quick wins plus strategic investments.</div></div>
+      <div class="card"><span class="cmd">/marketing:campaign-plan</span><div class="name">Campaign Plan</div><div class="desc">Full brief with objectives, audience, messaging, channel strategy, week-by-week content calendar, and success metrics.</div></div>
+      <div class="card"><span class="cmd">/marketing:competitive-brief</span><div class="name">Competitive Brief</div><div class="desc">Research competitors, compare positioning and messaging, find content gaps, and build sales battlecards.</div></div>
+      <div class="card"><span class="cmd">/marketing:content-creation</span><div class="name">Content Creation</div><div class="desc">Draft across channels: blog, social, email, landing pages, press releases, case studies. SEO-optimized copy with CTAs.</div></div>
+      <div class="card"><span class="cmd">/marketing:draft-content</span><div class="name">Draft Content</div><div class="desc">Channel-specific drafts with headline and subject line options, adapted to platform, audience, and brand voice.</div></div>
+      <div class="card"><span class="cmd">/marketing:email-sequence</span><div class="name">Email Sequence</div><div class="desc">Multi-email flows with full copy, timing, branching logic, exit conditions, A/B suggestions, and a flow diagram.</div></div>
+      <div class="card"><span class="cmd">/marketing:performance-report</span><div class="name">Performance Report</div><div class="desc">Key metrics, trend analysis, wins and misses, and a prioritized list of optimizations with next-period priorities.</div></div>
+      <div class="card"><span class="cmd">/marketing:brand-review</span><div class="name">Brand Review</div><div class="desc">Check a draft against your voice, style guide, and messaging pillars. Flags deviations by severity with before/after fixes.</div></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>BANDIT MEDIA GROUP // SKILLS PLAYBOOK</span>
+    <span>TYPE / IN CHAT TO BROWSE ALL SKILLS</span>
+  </footer>
+
+</div>
+</body>
+</html>
